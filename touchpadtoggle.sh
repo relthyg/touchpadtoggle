@@ -17,6 +17,6 @@ fi
 USERS=$(users | sort | tr " " "\n" | sort -u | tr "\n" " ")
 
 for USER in $USERS; do
-	su $USER -c "XAUTHORITY=/home/icke/.Xauthority DISPLAY=:0 notify-send \"$MOUSE\" \"$PAD\""
-	su $USER -c "XAUTHORITY=/home/icke/.Xauthority DISPLAY=:0 synclient touchpadoff=$1"
+	su $USER -c "XAUTHORITY=/home/$USER/.Xauthority DISPLAY=:0 notify-send \"$MOUSE\" \"$PAD\""
+	su $USER -c "XAUTHORITY=/home/$USER/.Xauthority DISPLAY=:0 synclient touchpadoff=$1"
 done
