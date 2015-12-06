@@ -1,0 +1,13 @@
+# Filename: /etc/udev/rules.d/70-touchpad.rules  
+# 
+# Checks if Logitech mouse is attached to USB port and runs script to
+# toggle touchpad
+#
+# Run
+#     udevadm info --name=/dev/input/mouse0 --attribute-walk
+# for info about your mouse
+
+KERNEL=="mouse0", SUBSYSTEMS=="input", ATTRS{name}=="Logitech USB-PS/2 Optical Mouse", ACTION=="add", RUN+="/opt/bin/touchpadtoggle.sh 1"
+KERNEL=="mouse0", SUBSYSTEMS=="input", ATTRS{name}=="Logitech USB-PS/2 Optical Mouse", ACTION=="remove", RUN+="/opt/bin/touchpadtoggle.sh 0"
+KERNEL=="mouse1", SUBSYSTEMS=="input", ATTRS{name}=="Logitech USB-PS/2 Optical Mouse", ACTION=="add", RUN+="/opt/bin/touchpadtoggle.sh 1"
+KERNEL=="mouse1", SUBSYSTEMS=="input", ATTRS{name}=="Logitech USB-PS/2 Optical Mouse", ACTION=="remove", RUN+="/opt/bin/touchpadtoggle.sh 0"
